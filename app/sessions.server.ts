@@ -3,7 +3,7 @@ import { User } from "@supabase/supabase-js";
 import { supabase } from "./supabase";
 import { createCookieSessionStorage, json, redirect } from "@remix-run/node";
 
-let sessionSecret = process.env.SESSION_SECRET;
+let sessionSecret = process.env.NEXT_SESSION_SECRET;
 if (!sessionSecret) throw new Error("SESSION_SECRET must be set");
 
 //TODO: Get these options from env

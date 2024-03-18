@@ -12,15 +12,15 @@ function createSupabase() {
   if (isServer) {
     //Server environment will use service key
     return createClient(
-      process.env.PUBLIC_SUPABASE_URL || "",
-      process.env.SUPABASE_SECRET_KEY || ""
+      process.env.NEXT_PUBLIC_SUPABASE_URL || "",
+      process.env.NEXT_SUPABASE_SECRET_KEY || ""
     );
   }
 
   //Browser environment will use anon key
   return createClient(
-    window.ENV.PUBLIC_SUPABASE_URL,
-    window.ENV.PUBLIC_SUPABASE_ANON_KEY
+    window.ENV.NEXT_PUBLIC_SUPABASE_URL,
+    window.ENV.NEXT_PUBLIC_SUPABASE_ANON_KEY
   );
 }
 
