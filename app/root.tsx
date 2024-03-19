@@ -14,11 +14,11 @@ import { getLoggedInUser } from "./sessions.server";
 import { UserContextProvider } from "./useUser";
 import { LinksFunction, LoaderFunction } from "@remix-run/node";
 
-export let links: LinksFunction = () => {
-  return [
-    // { rel: "stylesheet", href: globalStylesUrl },
-  ];
-};
+import twStyles from "./tailwind.css";
+
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: twStyles },
+];
 
 interface RootLoader {
   ENV: { [key: string]: string };

@@ -5,24 +5,38 @@ export default function LogIn() {
   const [email, setEmail] = useState<string | undefined>(undefined)
   const [password, setPassword] = useState<string | undefined>(undefined)
 
-  // const handleGoogleSignup = () => {
+  // const handleGoogleSignIn = () => {
   //   supabase.auth.signIn({ provider: "google" });
   // };
 
-  const handleSignInWithEmail = () => {
+  const handleEmailLogin = async () => {
     // supabase.auth.signIn({ provider: "google" });
-    supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email: email || "",
       password: password || ""
     })
+    // else handle error
   };
 
+  const handleGitHubLogin = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: 'github',
+      options: {
+        redirectTo: 'http://localhost:3000/auth/callback',
+      },
+    })
+  }
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut()
+  }
+
   return (
-    <div>
-      <p>Log in to your app</p>
+    <>
       <input onChange={(e) => setEmail(e.currentTarget.value)} type="email" placeholder="Email" value={email} />
       <input onChange={(e) => setPassword(e.currentTarget.value)} type="password" placeholder="Password" value={password} />
-      <button onClick={handleSignInWithEmail}>Log in with Google</button>
-    </div>
-  );
+      <button onClick={handleEmailLogin}>Login</button>
+      {/* <button onClick={handleGitHubLogin}>GitHub Login</button> */}
+    </>
+  )
 }

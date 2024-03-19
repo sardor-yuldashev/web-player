@@ -13,17 +13,12 @@ export const loader: LoaderFunction = async ({ request }) => {
 export default function Index() {
   const { user } = useUser();
   const { id: userId } = useLoaderData<User>() || {}
-
   return (
     <div>
       <h1>Remix + Supabase Auth Starter</h1>
-
       {user && <p>Your user id from client is: {user.id}</p>}
-
       {userId && <p>Your user from server is: {userId}</p>}
-
       {user && <button onClick={() => supabase.auth.signOut()}>logout</button>}
-
       {!user && (
         <p>
           You are not logged in yet, go <Link to="signup">sign up</Link> or{" "}

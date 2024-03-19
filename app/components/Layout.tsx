@@ -3,7 +3,7 @@ import React from "react";
 import { useUser } from "~/useUser";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  // const loader = useLoaderData() || {};
+  const loader = useLoaderData() || {};
   // const userId = loader.user?.id;
   const userId = useUser().user?.id
 

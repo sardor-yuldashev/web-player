@@ -19,8 +19,8 @@ function createSupabase() {
 
   //Browser environment will use anon key
   return createClient(
-    window.ENV.NEXT_PUBLIC_SUPABASE_URL,
-    window.ENV.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    window.ENV.PUBLIC_SUPABASE_URL,
+    window.ENV.PUBLIC_SUPABASE_ANON_KEY
   );
 }
 
